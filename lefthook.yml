@@ -16,3 +16,6 @@ pre-push:
     lint:
       glob: '*.{ts,tsx}'
       run: npm run lint
+    test:
+      glob: '*.{ts,tsx}'
+      run: npm run test:coverage
