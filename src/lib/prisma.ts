@@ -1,6 +1,16 @@
 import { PrismaClient } from '@/generated/prisma/client';
+import { PrismaPg } from '@prisma/adapter-pg';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const prismaClient = new PrismaClient(undefined as any);
+const connectionString = process.env.DATABASE_URL;
+
+if (!connectionString) {
+  throw new Error('DATABASE_URL environment variable is not defined');
+}
+
+const adapter = new PrismaPg({
+  connectionString,
+});
+
+const prismaClient = new PrismaClient({ adapter });
 
 export { prismaClient as prisma };
