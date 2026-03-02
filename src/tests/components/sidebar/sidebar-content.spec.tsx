@@ -6,10 +6,12 @@ import { render, screen } from '@/lib/test-utils';
 import userEvent from '@testing-library/user-event';
 
 const pushMock = jest.fn();
+let searchParamsMock = new URLSearchParams();
 jest.mock('next/navigation', () => ({
   useRouter: () => ({
     push: pushMock,
   }),
+  useSearchParams: () => searchParamsMock,
 }));
 
 const initialPrompts = [
@@ -121,5 +123,15 @@ describe('SidebarContent', () => {
       const lastClearCall = pushMock.mock.calls.at(-1);
       expect(lastClearCall?.[0]).toBe('/');
     });
+  });
+
+  it('deveria iniciar o campo de busca com o shearch param', async () => {
+    const text = 'inicial';
+    const searchParam = new URLSearchParams(`q=${text}`);
+    searchParamsMock = searchParam;
+    makeSut();
+
+    const searchInput = screen.getByPlaceholderText('Buscar prompts...');
+    expect(searchInput).toHaveValue(text);
   });
 });
