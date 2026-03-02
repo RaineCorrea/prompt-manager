@@ -12,7 +12,6 @@ import { Logo } from '../logo/logo';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { PromptSummary } from '@/core/domin/prompts/prompt.entity';
-import { Prompt } from 'next/font/google';
 import { PromptList } from '../prompts';
 
 export type SidebarContentProps = {
@@ -56,6 +55,15 @@ export const SidebarContent = ({ prompts }: SidebarContentProps) => {
               <ArrowRightToLine className="w-5 h-5 text-gray-100" />
             </Button>
           </header>
+          <div className="flex flex-col items-center space-y-4">
+            <Button
+              onClick={handleNewPrompt}
+              aria-label="Novo Prompt"
+              title="Novo Prompt"
+            >
+              <AddIcon className="w-5 h-5 text-white" />
+            </Button>
+          </div>
         </section>
       )}
 
@@ -108,9 +116,14 @@ export const SidebarContent = ({ prompts }: SidebarContentProps) => {
               </Button>
             </div>
           </section>
+          <nav
+            className="flex-1 overflow-auto px-6 pb-6"
+            aria-label="Lista de Prompts"
+          >
+            <PromptList prompts={prompts} />
+          </nav>
         </>
       )}
-      <PromptList prompts={prompts} />
     </aside>
   );
 };

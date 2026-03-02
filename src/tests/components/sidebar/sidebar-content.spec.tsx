@@ -92,6 +92,34 @@ describe('SidebarContent', () => {
 
       expect(collapseButton).not.toBeInTheDocument();
     });
+
+    it('deveria exibir o botao de criar um novo prompt na sidebar colapsada', async () => {
+      makeSut();
+
+      const collapseButton = screen.getByRole('button', {
+        name: /minimizar sidebar/i,
+      });
+      await user.click(collapseButton);
+
+      const newPromptButton = screen.getByRole('button', {
+        name: 'Novo Prompt',
+      });
+      expect(newPromptButton).toBeInTheDocument();
+    });
+
+    it('não deveria exibir a lista de prompts na sidebar colapsada', async () => {
+      makeSut();
+
+      const collapseButton = screen.getByRole('button', {
+        name: /minimizar sidebar/i,
+      });
+      await user.click(collapseButton);
+
+      const nav = screen.queryByRole('navigation', {
+        name: 'Lista de Prompts',
+      });
+      expect(nav).not.toBeInTheDocument();
+    });
   });
 
   describe('Novo prompt', () => {
