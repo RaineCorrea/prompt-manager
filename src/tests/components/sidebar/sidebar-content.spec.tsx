@@ -95,7 +95,7 @@ describe('SidebarContent', () => {
       ).toBeVisible();
 
       expect(
-        screen.getByRole('navigation', { name: 'Lista de prompts' })
+        screen.getByRole('navigation', { name: 'Lista de Prompts' })
       ).toBeVisible();
     });
 
