@@ -14,7 +14,7 @@ import { useRouter } from 'next/navigation';
 import { createPromptAction } from '@/app/actions/prompt.actions';
 import { toast } from 'sonner';
 
-export const PromprtForm = () => {
+export const PromptForm = () => {
   const router = useRouter();
 
   const form = useForm<CreatePromptDTO>({
