@@ -1,5 +1,5 @@
-import { PromprtForm } from '@/components/prompts';
+import { PromptForm } from '@/components/prompts';
 
 export default function PromptNew() {
-  return <PromprtForm />;
+  return <PromptForm />;
 }
