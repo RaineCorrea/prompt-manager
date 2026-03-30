@@ -3,7 +3,7 @@ import { PromptRepository } from '@/core/domin/prompts/prompt.repository';
 export class SearchPromptsUseCase {
   constructor(private promptRepository: PromptRepository) {}
 
-  async execute(term?: string) {
+  async execute(term: string) {
     const q = term?.trim() ?? '';
 
     if (!q) {
