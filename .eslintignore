@@ -1,0 +1,16 @@
+# Generated files
+src/generated
+dist
+build
+*.tsbuildinfo
+
+# Dependencies
+node_modules
+
+# Test coverage
+coverage
+
+# Environment files
+.env
+.env.local
+.env.*.local
